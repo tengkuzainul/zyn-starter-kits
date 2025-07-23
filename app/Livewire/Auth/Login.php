@@ -7,16 +7,17 @@ use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Illuminate\Support\Str;
 
 class Login extends Component
 {
     use WithNotification;
+
     #[Validate('required|string|email')]
     public string $email = '';
 
@@ -66,7 +67,7 @@ class Login extends Component
     {
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             $this->notifyError('The provided credentials do not match our records.');
@@ -84,7 +85,7 @@ class Login extends Component
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -92,7 +93,7 @@ class Login extends Component
 
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
-        $this->notifyWarning('Too many login attempts. Please try again in ' . ceil($seconds / 60) . ' minutes.');
+        $this->notifyWarning('Too many login attempts. Please try again in '.ceil($seconds / 60).' minutes.');
 
         throw ValidationException::withMessages([
             'email' => trans('auth.throttle', [
@@ -107,12 +108,12 @@ class Login extends Component
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
+        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
     }
 
     /**
      * If you need change layout style, change value in Layout()
-     * 
+     *
      * e.g. : components.layouts.auth.pages.form_login_card or components.layouts.auth.pages.form_login_box
      */
     #[

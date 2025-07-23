@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,13 +17,13 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'Super Administrator',
                 'email' => 'superadmin@example.id',
-                'password' => Hash::make('superadmin')
+                'password' => Hash::make('superadmin'),
             ],
             [
                 'name' => 'User',
                 'email' => 'user@example.id',
-                'password' => Hash::make('user')
-            ]
+                'password' => Hash::make('user'),
+            ],
         ];
 
         foreach ($users as $user) {

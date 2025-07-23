@@ -8,7 +8,6 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
-
     #[Layout('components.layouts.admin.app'), Title('Dashboard')]
     public function render()
     {

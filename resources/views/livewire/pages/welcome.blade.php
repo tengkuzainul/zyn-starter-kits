@@ -135,7 +135,7 @@
 
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 mt-12">
-            <a href="https://github.com/tengkuzainul/zyn-starter-kit" target="_blank"
+            <a href="https://github.com/tengkuzainul/zyn-starter-kits" target="_blank"
                 class="flex items-center justify-center px-8 py-3 rounded-xl bg-blue-600 dark:bg-blue-500 text-white text-sm font-medium hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl hover:bg-blue-700 dark:hover:bg-blue-600 min-w-[180px]">
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path
