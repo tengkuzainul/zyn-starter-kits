@@ -8,6 +8,8 @@
 
     <title>{{ config('app.name') }} &mdash; {{ $title ?? 'Authentication' }}</title>
 
+    <link rel="shortcut icon" href="{{ URL::asset('fav-icon.svg') }}" type="image/x-icon">
+
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link
